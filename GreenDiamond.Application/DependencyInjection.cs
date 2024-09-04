@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using GreenDiamond.Application.Interface.GreenDiamond;
-using GreenDiamond.Application.Services;
+using GreenDiamond.Application.Service.GreenDiamond;
 
 namespace GreenDiamond.Application
 {
@@ -14,8 +14,8 @@ namespace GreenDiamond.Application
         private static void AddServices(this IServiceCollection services)
         {
             #region GreenDiamond
-            services.AddScoped<IClassOfTradeService, ClassOfTradeService>();
 
+            services.AddScoped<IClassOfTradeService, ClassOfTradeService>();
             #endregion GreenDiamond
         }
     }

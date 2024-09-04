@@ -6,14 +6,16 @@ namespace GreenDiamond.Infrastructure.UnitOfWork
     public class UnitOfWorkGreenDiamond : IUnitOfWorkGreenDiamond, IAsyncDisposable
     {
         private bool _disposed = false;
+
         private readonly GreenDiamondContext _gdcDbContext;
         public IClassOfTradeRepository ClassOfTradeRepository { get; }
 
-        public UnitOfWorkGreenDiamond(
+        public UnitOfWorkGreenDiamond(  
             GreenDiamondContext gdcDbContext,  
             IClassOfTradeRepository classOfTradeRepository
             )
         {
+            _gdcDbContext = gdcDbContext;
             ClassOfTradeRepository = classOfTradeRepository;
         }
 
@@ -26,7 +28,7 @@ namespace GreenDiamond.Infrastructure.UnitOfWork
         public async Task CommitAsync()
         {
             EnsureNotDisposed();
-            await _gdcDbContext.SaveChangesAsync();
+                await _gdcDbContext.SaveChangesAsync();
         }
 
         public void Rollback()

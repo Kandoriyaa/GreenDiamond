@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenDiamond.WebApi", "GreenDiamond\GreenDiamond.WebApi.csproj", "{184E0650-607D-4400-9B86-66BD62603C5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenDiamond.WebApi", "GreenDiamond\GreenDiamond.WebApi.csproj", "{184E0650-607D-4400-9B86-66BD62603C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenDiamond.Application", "GreenDiamond.Application\GreenDiamond.Application.csproj", "{1A690D62-9BE3-4C6E-90F6-8FB1AD4D2A4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenDiamond.Application", "GreenDiamond.Application\GreenDiamond.Application.csproj", "{1A690D62-9BE3-4C6E-90F6-8FB1AD4D2A4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenDiamond.Infrastructure", "GreenDiamond.Infrastructure\GreenDiamond.Infrastructure.csproj", "{F3C8C31E-1CA8-4A72-B104-FAD53AD93E19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenDiamond.Infrastructure", "GreenDiamond.Infrastructure\GreenDiamond.Infrastructure.csproj", "{F3C8C31E-1CA8-4A72-B104-FAD53AD93E19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenDiamond.Domain", "GreenDiamond.Domain\GreenDiamond.Domain.csproj", "{75A94E07-2B11-40D6-89FB-985F7D92CF97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenDiamond.Domain", "GreenDiamond.Domain\GreenDiamond.Domain.csproj", "{75A94E07-2B11-40D6-89FB-985F7D92CF97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

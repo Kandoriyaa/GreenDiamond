@@ -4,13 +4,13 @@ namespace GreenDiamond.Application.Common
 {
     public class AuditableDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
-        [JsonIgnore]
-        public int? CompanyId { get; set; }
+        //[JsonIgnore]
+        //public int? CompanyId { get; set; }
 
-        [JsonIgnore]
-        public int? TenantId { get; set; }
+        //[JsonIgnore]
+        //public int? TenantId { get; set; }
 
         [JsonIgnore]
         public DateTime CreatedDate { get; set; }

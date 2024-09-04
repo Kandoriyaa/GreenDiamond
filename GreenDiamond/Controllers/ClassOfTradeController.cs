@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GreenDiamond.Application.DTOs.GreenDiamond;
 using GreenDiamond.Application.Helper;
-using GreenDiamond.WebApi.Controllers;
-using GreenDiamond.Application.DTOs.GreenDiamond;
 using GreenDiamond.Application.Interface.GreenDiamond;
-
+using GreenDiamond.WebApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WoopsaERP.WebApi.Controllers.WoopsaErp
 {
@@ -26,12 +25,12 @@ namespace WoopsaERP.WebApi.Controllers.WoopsaErp
             {
                 return StatusCode(StatusCodes.Status200OK, new { Message = GlobalDeclaration._retriveResponse, Data = Result });
             }
-            return StatusCode(StatusCodes.Status404NotFound , new {Message = GlobalDeclaration._retriveResponse, Data =Result});
+            return StatusCode(StatusCodes.Status404NotFound, new { Message = GlobalDeclaration._retriveResponse, Data = Result });
         }
 
 
         [HttpGet]
-        [Route("GetClassOfTradeById/{Id}")]
+        [Route("GetClassOfTradeById/{id}")]
         public async Task<IActionResult> GetClassOfTradeById(string id)
         {
             var Result = await _classOfTradeService.GetClassOfTradeById(id);

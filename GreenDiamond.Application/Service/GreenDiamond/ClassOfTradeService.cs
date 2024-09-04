@@ -3,21 +3,20 @@ using GreenDiamond.Application.Interface.GreenDiamond;
 using GreenDiamond.Domain.ErpEntities;
 using GreenDiamond.Domain.UnitOfWork;
 
-namespace GreenDiamond.Application.Services
+namespace GreenDiamond.Application.Service.GreenDiamond
 {
     public class ClassOfTradeService : IClassOfTradeService
     {
-        private readonly IUnitOfWorkGreenDiamond _unitOfWorkErp;
+        private readonly IUnitOfWorkGreenDiamond _unitOfWorkGD;
 
-        public ClassOfTradeService(IUnitOfWorkGreenDiamond unitOfWorkErp)
+        public ClassOfTradeService(IUnitOfWorkGreenDiamond unitOfWorkGreenDiamond)
         {
-            _unitOfWorkErp = unitOfWorkErp;
+            _unitOfWorkGD = unitOfWorkGreenDiamond;
         }
-
 
         public async Task<ClassOfTradeListDto> GetAllClassOfTrade(int page, int pageSize, string search)
         {
-            var (classOfTrade, totalCount) = await _unitOfWorkErp.ClassOfTradeRepository.GetAllAsync(page, pageSize, search);
+            var (classOfTrade, totalCount) = await _unitOfWorkGD.ClassOfTradeRepository.GetAllAsync(page, pageSize, search);
 
             var Opstion = classOfTrade.Select(classOfTrades => new ClassOfTradeDto
             {
@@ -38,7 +37,7 @@ namespace GreenDiamond.Application.Services
 
         public async Task<ClassOfTradeDto> GetClassOfTradeById(string id)
         {
-            var Opstion = await _unitOfWorkErp.ClassOfTradeRepository.GetByIdAsync(id);
+            var Opstion = await _unitOfWorkGD.ClassOfTradeRepository.GetByIdAsync(id);
 
             var program = new ClassOfTradeDto
             {
@@ -55,21 +54,21 @@ namespace GreenDiamond.Application.Services
 
         public async Task<string> Save(ClassOfTradeDto classOfTradeDto)
         {
-            var classOfTrade = await _unitOfWorkErp.ClassOfTradeRepository.GetByIdAsync(classOfTradeDto.TradeCode);
+            var classOfTrade = await _unitOfWorkGD.ClassOfTradeRepository.GetByIdAsync(classOfTradeDto.TradeCode);
 
             if (classOfTrade == null)
             {
                 classOfTrade = new ClassOfTrade();
                 SetClassOfTradeProperties(classOfTrade, classOfTradeDto, isNew: true);
-                await _unitOfWorkErp.ClassOfTradeRepository.AddAsync(classOfTrade);
+                await _unitOfWorkGD.ClassOfTradeRepository.AddAsync(classOfTrade);
             }
             else
             {
                 SetClassOfTradeProperties(classOfTrade, classOfTradeDto, isNew: false);
-                await _unitOfWorkErp.ClassOfTradeRepository.UpdateAsync(classOfTrade);
+                await _unitOfWorkGD.ClassOfTradeRepository.UpdateAsync(classOfTrade);
             }
 
-            await _unitOfWorkErp.CommitAsync();
+            await _unitOfWorkGD.CommitAsync();
 
             return classOfTrade.TradeCode;
         }
@@ -83,24 +82,24 @@ namespace GreenDiamond.Application.Services
 
             if (isNew)
             {
-                classOfTrade.CreatedBy = classOfTradeDto.CreatedBy;
-                classOfTrade.CreatedDate = classOfTradeDto.CreatedDate;
+                classOfTrade.CreatedBy = 1;
+                classOfTrade.CreatedDate = DateTime.Now;
             }
             else
             {
-                classOfTrade.ModifiedBy = classOfTradeDto.ModifiedBy;
-                classOfTrade.ModifiedDate = classOfTradeDto.ModifiedDate;
+                classOfTrade.ModifiedBy = 1;
+                classOfTrade.ModifiedDate = DateTime.Now;
             }
         }
 
         public async Task<bool> Delete(string id)
         {
-            var Opstion = await _unitOfWorkErp.ClassOfTradeRepository.GetByIdAsync(id);
+            var Opstion = await _unitOfWorkGD.ClassOfTradeRepository.GetByIdAsync(id);
 
             if (Opstion != null)
             {
                 Opstion.IsDeleted = true;
-                await _unitOfWorkErp.CommitAsync();
+                await _unitOfWorkGD.CommitAsync();
                 return true;
 
             }

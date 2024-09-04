@@ -8,7 +8,6 @@ namespace GreenDiamond.Infrastructure.Repositories.GreenDiamond
     {
         private readonly GreenDiamondContext _context;
 
-
         public ClassOfTradeRepository(GreenDiamondContext context)
         {
             _context = context;
@@ -39,7 +38,7 @@ namespace GreenDiamond.Infrastructure.Repositories.GreenDiamond
         {
 
             var query = _context.ClassOfTrades
-                .Where(y => y.TradeCode == id   && y.IsDeleted != true && y.TradeCode != null);
+                .Where(aa => aa.TradeCode == id && aa.IsDeleted != true && aa.TradeCode != null);
 
             return query.FirstOrDefaultAsync();
         }

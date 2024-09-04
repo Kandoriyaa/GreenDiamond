@@ -1,0 +1,8 @@
+﻿Database Scaffold  GreenDiamond
+
+-- Create New 
+Scaffold-DbContext "Server=SSLLP-63;Initial Catalog=GreenDiamond;Persist Security Info=False;User ID=sa;Password=sa;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir "../GreenDiamond.Infrastructure/DatabaseContext" -OutputDir "../GreenDiamond.Domain/ErpEntities" -Namespace "GreenDiamond.Domain.ErpEntities" -ContextNamespace "GreenDiamond.Infrastructure"
+
+
+-- Force to update existing dbcontext entities
+Scaffold-DbContext "Server=SSLLP-63;Initial Catalog=GreenDiamond;Persist Security Info=False;User ID=sa;Password=sa;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir "../GreenDiamond.Infrastructure/DatabaseContext" -OutputDir "../GreenDiamond.Domain/ErpEntities" -Namespace "GreenDiamond.Domain.ErpEntities" -ContextNamespace "GreenDiamond.Infrastructure" -NoOnConfiguring -force
