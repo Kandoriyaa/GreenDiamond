@@ -15,7 +15,6 @@ namespace WoopsaERP.WebApi.Controllers.WoopsaErp
             _classOfTradeService = classOfTradeService;
         }
 
-
         [HttpGet]
         [Route("GetAllClassOfTrade")]
         public async Task<IActionResult> GetAllClassOfTrade([FromQuery] int page = PaginationConstant.DefaultPage, [FromQuery] int pageSize = PaginationConstant.DefaultPageSize, [FromQuery] string search = "")
@@ -27,7 +26,6 @@ namespace WoopsaERP.WebApi.Controllers.WoopsaErp
             }
             return StatusCode(StatusCodes.Status404NotFound, new { Message = GlobalDeclaration._retriveResponse, Data = Result });
         }
-
 
         [HttpGet]
         [Route("GetClassOfTradeById/{id}")]
