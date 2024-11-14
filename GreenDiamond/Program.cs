@@ -1,6 +1,7 @@
 using GreenDiamond.Application;
 using GreenDiamond.Infrastructure;
 using GreenDiamond.WebApi.Middleware;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -37,7 +38,7 @@ builder.Services.AddSwaggerGen();
 // Add HttpContextAccessor
 builder.Services.AddHttpContextAccessor();
 
-    var app = builder.Build();
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -52,11 +53,19 @@ app.UseRouting();
 
 // Authorization middleware should be used if authorization metadata is present
 app.UseAuthorization();
+app.UseAuthorization();
+app.MapControllers();
 
 app.UseCors(MyAllowSpecificOrigins);
 
 // Middleware
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Upload/Clothe")),
+    RequestPath = new PathString("/Upload/Clothe"),
+});
 
 app.MapControllers();
 

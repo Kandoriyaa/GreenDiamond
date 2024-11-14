@@ -5,7 +5,7 @@
         // Pagination Para
         public static readonly int page = 1;
         public static readonly int pageSize = 10;
-
+        public static readonly string _clothe_path = "Clothe";
         // Messages
         public static readonly string _internalServerError = "Something went wrong, Please try after sometime.";
 

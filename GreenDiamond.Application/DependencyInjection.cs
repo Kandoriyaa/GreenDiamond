@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using GreenDiamond.Application.Interface.GreenDiamond;
 using GreenDiamond.Application.Service.GreenDiamond;
+using GreenDiamond.Application.Interface.GreenDiamond.Authentication;
+using GreenDiamond.Application.Service.Authentication;
 
 namespace GreenDiamond.Application
 {
@@ -16,6 +18,9 @@ namespace GreenDiamond.Application
             #region GreenDiamond
 
             services.AddScoped<IClassOfTradeService, ClassOfTradeService>();
+            services.AddScoped<IClotheDisplayService, ClotheDisplayService>();
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ICustomerService, CustomerService>();
             #endregion GreenDiamond
         }
     }

@@ -13,7 +13,7 @@ namespace GreenDiamond.Application.Common
         //public int? TenantId { get; set; }
 
         [JsonIgnore]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [JsonIgnore]
         public int? CreatedBy { get; set; }

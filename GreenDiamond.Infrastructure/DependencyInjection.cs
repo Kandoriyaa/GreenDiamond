@@ -1,6 +1,9 @@
-﻿using GreenDiamond.Domain.Interface.GreenDiaiondConnection;
+﻿using GreenDiamond.Application.Interface.File;
+using GreenDiamond.Domain.Interface.GreenDiaiondConnection;
+using GreenDiamond.Domain.Interface.GreenDiamond;
 using GreenDiamond.Domain.Interfaces.GreenDiamond;
 using GreenDiamond.Domain.UnitOfWork;
+using GreenDiamond.Infrastructure.ImageFile;
 using GreenDiamond.Infrastructure.Repositories.CurrentService;
 using GreenDiamond.Infrastructure.Repositories.GreenDiamond;
 using GreenDiamond.Infrastructure.UnitOfWork;
@@ -34,6 +37,7 @@ namespace GreenDiamond.Infrastructure
             #region Current  Service
 
             services.AddScoped<IConnection, Connection>();
+            services.AddScoped<IImageStorageService, ImageStorageService>();
 
             #endregion Current  Service
 
@@ -41,6 +45,9 @@ namespace GreenDiamond.Infrastructure
 
             services.AddScoped<IUnitOfWorkGreenDiamond, UnitOfWorkGreenDiamond>();
             services.AddScoped<IClassOfTradeRepository, ClassOfTradeRepository>();
+            services.AddScoped<IClotheDisplayRepository, ClotheDisplayRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             #endregion GreenDiamond
         }

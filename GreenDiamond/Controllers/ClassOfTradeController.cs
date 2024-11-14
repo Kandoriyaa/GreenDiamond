@@ -55,7 +55,6 @@ namespace WoopsaERP.WebApi.Controllers.WoopsaErp
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteClassOfTrade(string id)
         {
-
             var Result = await _classOfTradeService.Delete(id);
             if (Result)
             {

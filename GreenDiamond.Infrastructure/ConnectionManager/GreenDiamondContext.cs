@@ -20,7 +20,6 @@ namespace GreenDiamond.Infrastructure
 
         protected override async void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             if (optionsBuilder.IsConfigured)
             {
                 string connection = ConnectionString;

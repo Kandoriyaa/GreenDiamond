@@ -1,5 +1,6 @@
 ﻿using GreenDiamond.Domain.UnitOfWork;
 using GreenDiamond.Domain.Interfaces.GreenDiamond;
+using GreenDiamond.Domain.Interface.GreenDiamond;
 
 namespace GreenDiamond.Infrastructure.UnitOfWork
 {
@@ -9,14 +10,23 @@ namespace GreenDiamond.Infrastructure.UnitOfWork
 
         private readonly GreenDiamondContext _gdcDbContext;
         public IClassOfTradeRepository ClassOfTradeRepository { get; }
+        public IClotheDisplayRepository ClotheDisplayRepository { get; }
+        public ILoginRepository LoginRepository { get; }
+        public ICustomerRepository CustomerRepository { get; }
 
         public UnitOfWorkGreenDiamond(  
             GreenDiamondContext gdcDbContext,  
-            IClassOfTradeRepository classOfTradeRepository
+            IClassOfTradeRepository classOfTradeRepository,
+            IClotheDisplayRepository clotheDisplayRepository,
+            ILoginRepository loginRepository,
+            ICustomerRepository customerRepository
             )
         {
             _gdcDbContext = gdcDbContext;
             ClassOfTradeRepository = classOfTradeRepository;
+            ClotheDisplayRepository = clotheDisplayRepository;
+            LoginRepository = loginRepository;
+            CustomerRepository = customerRepository;
         }
 
         public void Commit()
@@ -74,6 +84,7 @@ namespace GreenDiamond.Infrastructure.UnitOfWork
             await DisposeAsync(true);
             GC.SuppressFinalize(this);
         }
+
         protected virtual async ValueTask DisposeAsync(bool disposing)
         {
             if (!_disposed)
